@@ -3,124 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Register & Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+    <script type="module" src="firebaseauth.js"></script>
 </head>
 <body>
-    <!--  -->
-    <div id="sidebar" class="sidebar">
-        <button id="toggleSidebar" class="toggle-button"><i class="fas fa-bars"></i></button>
-        <h2>Dashboard</h2>
-        <ul>
-            <li><a href="#" onclick="showSection('home')">Home</a></li>
-             <li><a href="#" onclick="showSection('courses')">Courses</a></li>
-            <li><a href="#" onclick="showSection('resources')">Resource Material</a></li>
-            <li><a href="#" onclick="showSection('rewards')">Rewards</a></li>
-            <li><a href="#" onclick="showSection('groupStudy')">Group Study</a></li>
-            <li><a href="#" onclick="showSection('reports')">Daily Progress Reports</a></li>
-        </ul>
-        <button id="log">Logout</button> 
-    </div>   
-     
-    <div class="main-content">
-        <section id="home" class="active">
-            <h1>Welcome to the Dashboard</h1>
-            <div class="video-grid">
-                <!-- Add more video cards as needed -->
-                <div class="video-card">
-                    <video src="./Assets/Vedio1.mp4" class="card-video" controls></video>
-                </div>
-                <div class="video-card">
-                    <video src="./Assets/Vedio2.mp4" class="card-video" controls></video>
-                </div>
-                <div class="video-card">
-                    <video src="./Assets/Vedio3.mp4" class="card-video" controls></video>
-                </div>
-                <div class="video-card">
-                    <video src="./Assets/Vedio4.mp4" class="card-video" controls></video>
-                </div>
-                <div class="video-card">
-                    <video src="./Assets/Vedio5.mp4" class="card-video" controls></video>
-                </div>
-                <div class="video-card">
-                    <video src="./Assets/Vedio6.mp4" class="card-video" controls></video>
-                </div>
-                <div class="video-card">
-                    <video src="./Assets/Vedio7.mp4" class="card-video" controls></video>
-                </div>
-                <div class="video-card">
-                    <video src="./Assets/Vedio7.mp4" class="card-video" controls></video>
-                </div>
-                <div class="video-card">
-                    <video src="./Assets/Vedio8.mp4" class="card-video" controls></video>
-                </div>
-                <div class="video-card">
-                    <video src="./Assets/Vedio9.mp4" class="card-video" controls></video>
-                </div><div class="video-card">
-                    <video src="./Assets/Vedio10.mp4" class="card-video" controls></video>
-                </div>
-                <div class="video-card">
-                    <video src="./Assets/Vedio11.mp4" class="card-video" controls></video>
-                </div>
-                <!-- Repeat for other videos -->
-            </div>
-        
-            <!-- Modal for hover effect -->
-            <div id="videoModal" class="video-modal">
-                <div class="modal-content">
-                    <video id="modalVideo" controls></video>
-                </div>
-            </div>
-        </section>
-        <section id="resources" style="display:none;">
-            <h1>Resource Material</h1>
-            <div class="resource-buttons">
-                <button onclick="showResource('html')">HTML</button>
-                <button onclick="showResource('css')">CSS</button>
-                <button onclick="showResource('javascript')">JavaScript</button>
-            </div>
-            <div class="resource-content" id="resourceContent">
-                <iframe id="pdfPreview" src="" frameborder="0" style="width: 100%; height: 500px; display: none;"></iframe>
-                <a id="downloadLink" href="Resource\html_tutorial.pdf">HTML</a>
-                <a id="downloadLink" href="Resource\css_tutorial.pdf" download>CSS</a>
-                <a id="downloadLink" href="Resource\javascript_tutorial.pdf" download>JavaScript</a>
-                <a id="downloadLink" href="Resource\intro2DB20180611.pdf" download>DBMS</a>
-                <a id="downloadLink" href="Resource\Web.pdf" download >Web development</a>
-
-            </div>
-        </section>
-        
-        <!-- Other sections -->
-
-        <section id="groupStudy">
-            <h1>Group Study</h1>
-            <button id="createSession">Create Session</button>
-            <div id="sessionDetails" style="display: none;">
-                <p>Share this link with your colleagues:</p>
-                <input type="text" id="sessionLink" readonly>
-                <button id="startSharing">Start Sharing</button>
-            </div>
-            <div id="groupStudyContent" style="display: none;">
-                <h2>Group Study Session</h2>
-                <div id="videoContainer"></div>
-                <div id="screenContainer"></div>
-                <div id="collabContent">
-                    <h3>Collaborative Content</h3>
-                    <p>Read and discuss the material together.</p>
-                </div>
-                <div id="fileUploadContainer">
-                    <input type="file" id="fileInput">
-                    <button id="uploadFile">Upload File</button>
-                </div>
-               
-            </div>
-            
-        </section>
-        
+    <div class="container" id="signup" style="display:none;">
+      <h1 class="form-title">Register</h1>
+      <form method="post" action="">
+        <div id="signUpMessage" class="messageDiv" style="display:none;"></div>
+        <div class="input-group">
+           <i class="fas fa-user"></i>
+           <input type="text"  id="fName" placeholder="First Name" required>
+           <label for="fname">First Name</label>
+        </div>
+        <div class="input-group">
+            <i class="fas fa-user"></i>
+            <input type="text"  id="lName" placeholder="Last Name" required>
+            <label for="lName">Last Name</label>
+        </div>
+        <div class="input-group">
+            <i class="fas fa-envelope"></i>
+            <input type="email"  id="rEmail" placeholder="Email" required>
+            <label for="rEmail">Email</label>
+        </div>
+        <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="rPassword"  placeholder="Password" required>
+            <label for="rPassword">Password</label>
+        </div>
+       <button class="btn" id="submitSignUp" >Sign Up</button>
+      </form>
+      <p class="or">
+       ----------or--------
+      </p>
+      <div class="icons">
+        <i class="fab fa-google"></i>
+        <i class="fab fa-facebook"></i>
+      </div>
+      <div class="links">
+        <p>Already Have Account ?</p>
+        <button id="signInButton">Sign In</button>
+      </div>
     </div>
-    
 
-    <script src="script.js"></script>
+  <div class="container" id="signIn">
+        <h1 class="form-title">Sign In</h1>
+        <form method="post" action="">
+          <div id="signInMessage" class="messageDiv" style="display:none;"></div>
+
+          <div class="input-group">
+              <i class="fas fa-envelope"></i>
+              <input type="email"  id="email" placeholder="Email" required>
+              <label for="email">Email</label>
+          </div>
+          <div class="input-group">
+              <i class="fas fa-lock"></i>
+            <input type="password" id="password"  placeholder="Password" required>
+              <label for="password">Password</label>
+          </div>
+          <p class="recover">
+            <a href="#">Recover Password</a>
+          </p>
+         <button  class="btn"  id="submitSignIn">Sign In</button>
+        </form>
+        <p class="or">
+          ----------or--------
+        </p>
+        <div class="icons">
+          <i class="fab fa-google"></i>
+          <i class="fab fa-facebook"></i>
+        </div>
+        <div class="links">
+          <p>Don't have account yet?</p>
+          <button id="signUpButton">Sign Up</button>
+        </div>
+      </div>
+      <script src="script.js"></script>
 </body>
 </html>
