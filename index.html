@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!--  -->
+    <div id="sidebar" class="sidebar">
+        <button id="toggleSidebar" class="toggle-button"><i class="fas fa-bars"></i></button>
+        <h2>Dashboard</h2>
+        <ul>
+            <li><a href="#" onclick="showSection('home')">Home</a></li>
+             <li><a href="#" onclick="showSection('courses')">Courses</a></li>
+            <li><a href="#" onclick="showSection('resources')">Resource Material</a></li>
+            <li><a href="#" onclick="showSection('rewards')">Rewards</a></li>
+            <li><a href="#" onclick="showSection('groupStudy')">Group Study</a></li>
+            <li><a href="#" onclick="showSection('reports')">Daily Progress Reports</a></li>
+        </ul>
+        <button id="log">Logout</button> 
+    </div>   
+     
+    <div class="main-content">
+        <section id="home" class="active">
+            <h1>Welcome to the Dashboard</h1>
+            <div class="video-grid">
+                <!-- Add more video cards as needed -->
+                <div class="video-card">
+                    <video src="./Assets/Vedio1.mp4" class="card-video" controls></video>
+                </div>
+                <div class="video-card">
+                    <video src="./Assets/Vedio2.mp4" class="card-video" controls></video>
+                </div>
+                <div class="video-card">
+                    <video src="./Assets/Vedio3.mp4" class="card-video" controls></video>
+                </div>
+                <div class="video-card">
+                    <video src="./Assets/Vedio4.mp4" class="card-video" controls></video>
+                </div>
+                <div class="video-card">
+                    <video src="./Assets/Vedio5.mp4" class="card-video" controls></video>
+                </div>
+                <div class="video-card">
+                    <video src="./Assets/Vedio6.mp4" class="card-video" controls></video>
+                </div>
+                <div class="video-card">
+                    <video src="./Assets/Vedio7.mp4" class="card-video" controls></video>
+                </div>
+                <div class="video-card">
+                    <video src="./Assets/Vedio7.mp4" class="card-video" controls></video>
+                </div>
+                <div class="video-card">
+                    <video src="./Assets/Vedio8.mp4" class="card-video" controls></video>
+                </div>
+                <div class="video-card">
+                    <video src="./Assets/Vedio9.mp4" class="card-video" controls></video>
+                </div><div class="video-card">
+                    <video src="./Assets/Vedio10.mp4" class="card-video" controls></video>
+                </div>
+                <div class="video-card">
+                    <video src="./Assets/Vedio11.mp4" class="card-video" controls></video>
+                </div>
+                <!-- Repeat for other videos -->
+            </div>
+        
+            <!-- Modal for hover effect -->
+            <div id="videoModal" class="video-modal">
+                <div class="modal-content">
+                    <video id="modalVideo" controls></video>
+                </div>
+            </div>
+        </section>
+        <section id="resources" style="display:none;">
+            <h1>Resource Material</h1>
+            <div class="resource-buttons">
+                <button onclick="showResource('html')">HTML</button>
+                <button onclick="showResource('css')">CSS</button>
+                <button onclick="showResource('javascript')">JavaScript</button>
+            </div>
+            <div class="resource-content" id="resourceContent">
+                <iframe id="pdfPreview" src="" frameborder="0" style="width: 100%; height: 500px; display: none;"></iframe>
+                <a id="downloadLink" href="Resource\html_tutorial.pdf">HTML</a>
+                <a id="downloadLink" href="Resource\css_tutorial.pdf" download>CSS</a>
+                <a id="downloadLink" href="Resource\javascript_tutorial.pdf" download>JavaScript</a>
+                <a id="downloadLink" href="Resource\intro2DB20180611.pdf" download>DBMS</a>
+                <a id="downloadLink" href="Resource\Web.pdf" download >Web development</a>
+
+            </div>
+        </section>
+        
+        <!-- Other sections -->
+
+        <section id="groupStudy">
+            <h1>Group Study</h1>
+            <button id="createSession">Create Session</button>
+            <div id="sessionDetails" style="display: none;">
+                <p>Share this link with your colleagues:</p>
+                <input type="text" id="sessionLink" readonly>
+                <button id="startSharing">Start Sharing</button>
+            </div>
+            <div id="groupStudyContent" style="display: none;">
+                <h2>Group Study Session</h2>
+                <div id="videoContainer"></div>
+                <div id="screenContainer"></div>
+                <div id="collabContent">
+                    <h3>Collaborative Content</h3>
+                    <p>Read and discuss the material together.</p>
+                </div>
+                <div id="fileUploadContainer">
+                    <input type="file" id="fileInput">
+                    <button id="uploadFile">Upload File</button>
+                </div>
+               
+            </div>
+            
+        </section>
+        
+    </div>
+    
+
+    <script src="script.js"></script>
+</body>
+</html>
